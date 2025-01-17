@@ -1,16 +1,12 @@
-import pytesseract
-from PIL import ImageGrab
+import pyautogui
 import pyttsx3
 import time
 
-# Configure the path to the Tesseract executable
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
 def scan_screen_for_letter(letter='e'):
     # Capture the screen
-    screen = ImageGrab.grab()
-    # Perform OCR on the screen
-    text = pytesseract.image_to_string(screen)
+    screen = pyautogui.screenshot()
+    # Convert the image to text (without OCR)
+    text = screen.to_text()
     # Check if the letter is in the captured text
     return letter in text
 
